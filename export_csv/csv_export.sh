@@ -17,3 +17,6 @@ cat result_temp.json| jq -r " .triageRequest.a.p[] |[ .pid, .pn, .iic, .ir, .ip,
 # トリアージの脆弱性情報のCSV出力
 echo '"インスタンスID","CVE-ID","パッケージ名","パッケージバージョン","セベリティ","CVSSスコア","タイトル","攻撃元区分","攻撃の複雑性","FIXの有無","エクスプロイト状況","公開日","更新日","攻撃の種類","アプリケーションリスク","判定スコア","判定結果","タグ"' > "${appname}_${triage_id}_vulnerabilities.csv"
 cat result_temp.json| jq -r ".cves[] |[ .pid, .cve, .pn, .pv, .s, .cs, .ct, .av, .ac, .if, .ecm, .cp, .cu, .at, .ar, .ps, .pl, .tg[].tn  ] |@csv" >> "${appname}_${triage_id}_vulnerabilities.csv"
+
+# 一時ファイルの削除
+rm result_temp.json
