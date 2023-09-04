@@ -10,7 +10,11 @@
 
 #### 事前準備
 
-1. スクリプトに実行権限を付与します。</br>
+1. スクリプトを実行する環境にcvss_calculatorをインストールします。</br>
+https://github.com/RedHatProductSecurity/cvss </br>
+   `pip install cvss`
+
+3. スクリプトに実行権限を付与します。</br>
    `chmod +x blackduck2ls.sh`
 
 #### 出力結果
