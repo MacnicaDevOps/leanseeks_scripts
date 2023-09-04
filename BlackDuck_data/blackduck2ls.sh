@@ -89,6 +89,13 @@ while read row; do
   it=$((it+1))
 done < ${file}.csv
 
+# API用のJSONファイルを作成する。
+echo '[{"id": "'${file}_LS.json'",
+    "scanner": 255,
+    "payload":' > "${file}_LS_API.json"
+cat ${file}_LS.json >> "${file}_LS_API.json"
+echo '}]' >> "${file}_LS_API.json"
+
 # 作業ファイルの削除
 rm list.txt
 rm ${file}.csv
