@@ -1,4 +1,4 @@
-## BlackDuckのJSONファイルを読み込んでLeanSeeks用のファイルを生成する。
+## BlackDuckのJSONファイルを読み込んでLeanSeeks用のファイルを生成
 
 #### 利用方法
 
