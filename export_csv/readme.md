@@ -17,6 +17,8 @@
    `ls_token="AbcDEfg12345・・・・"`
 2. スクリプトに実行権限を付与します。</br>
    `chmod +x csv_export.sh`
+3. スクリプト実行環境でjqが使えることを確認します。ない場合はインストールします。</br>
+   https://jqlang.github.io/jq/
 
 #### 出力結果
 
