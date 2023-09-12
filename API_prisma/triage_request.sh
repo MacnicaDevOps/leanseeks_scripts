@@ -12,9 +12,6 @@
 #app_priority="H"
 #scanner="0"
 
-# テスト用の変数
-source env.txt
-
 # ワークディレクトリを作成する
 mkdir work
 #Prisma Cloudに対象イメージの脆弱性情報を問い合わせる
@@ -42,9 +39,6 @@ echo "------- トリアージリクエストパラメーターの準備中"
 param="{ \"application_name\": \"${app_name}\", \"importance\": \"${app_priority}\", \"is_template\": false, \"pods\":"
 param+=$(jq -R -s -f mapping.jq params.csv | jq -r -c '[.[] |select(.pod_name != null and .is_root != "is_root" )]'| sed -e 's/"¥r"//g')"}"
 echo ${param} | sed 's/"TRUE"/true/g' | sed -e 's/"FALSE"/false/g' > "work/param.json"
-
-### Debug ###
-cat work/param.json | jq
 
 # トリアージリクエストを実行する
 echo "------- トリアージリクエスト実行中"
