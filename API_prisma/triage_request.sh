@@ -13,7 +13,7 @@
 #scanner="0"
 
 # ワークディレクトリを作成する
-mkdir work
+mkdir -p work
 #Prisma Cloudに対象イメージの脆弱性情報を問い合わせる
 curl -u "${pc_user}:${pc_pass}" -H "Content-Type: application/json" "${pc_url}/api/v1/scans?search=${image}" | jq -r '[ .[].entityInfo ]' > "work/ci_scan.json"
 

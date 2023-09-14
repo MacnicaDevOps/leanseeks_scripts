@@ -66,7 +66,7 @@ while read row; do
     fi
 
 #パッケージ名とバージョンを取得
-    if [ -n $(echo ${data} | jq -r ".cpeURIs[0]") ]; then
+    if [ $(echo ${data} | jq -r ".cpeURIs[0]") != null ]; then
       packageName=$(echo ${data} | tr -d "[:cntrl:]" | jq -r '.cpeURIs[0]' | cut -d : -f 4)
       packageVersion=$(echo ${data} | tr -d "[:cntrl:]" | jq -r '.cpeURIs[0]' | cut -d : -f 5)
     else

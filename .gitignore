@@ -1,3 +1,6 @@
 API_prisma/env.txt
 API_prisma/work
 API_prisma/twistcli
+vuls_data/vuls.json
+vuls_data/vuls
+vuls_data/vuls/cve_list.txt
