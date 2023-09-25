@@ -34,7 +34,7 @@ while read row; do
       I=$(echo ${vector} | cut -d / -f 8 | sed -e "s/I://g")
       A=$(echo ${vector} | cut -d / -f 9 | sed -e "s/A://g")
     elif [ $(echo ${data} | tr -d "[:cntrl:]" | jq -r ".cveContents.${source}[0].cvss2Score") != "0" ]; then
-      severity=$(echo ${data} | jq -r ".cveContents.${source}[].cvss2Severity")
+      severity=$(echo ${data} | jq -r ".cveContents.${source}[0].cvss2Severity")
       score=$(echo ${data} | tr -d "[:cntrl:]" | jq -r ".cveContents.${source}[0].cvss2Score")
       title=$(echo ${data} | tr -d "[:cntrl:]" | jq -r ".cveContents.${source}[0].title"| sed s@\"@\'@g | tr -d '\n' | tr -d '\')
       description=$(echo ${data} | tr -d "[:cntrl:]" | jq -r ".cveContents.${source}[0].summary"| sed s@\"@\'@g | tr -d '\n' | tr -d '\')
@@ -74,6 +74,17 @@ while read row; do
       packageVersion="N/A"
     fi
 
+# エクスプロイトデータの取得
+# もし${data} | jq -r ".exploits"がnullでなければexploit=1とする。なければexploit=0とする。
+    if [ "$(echo ${data} | tr -d '[:cntrl:]' | jq -r '.exploits')" != null ]; then
+      exploit="1"
+      pubExp=$(echo ${data} | tr -d "[:cntrl:]" | jq -c "[.exploits[].url] | @csv")
+    else
+      exploit="0"
+      pubExp='""'
+    fi
+
+
 echo "cveId=${row}"
 
 ## JSONの組み立て
@@ -92,8 +103,8 @@ echo '{
     "I": "'"${I}"'",
     "A": "'"${A}"'",
     "hasFix": "",
-    "exploit": "",
-    "publicExploits": "",
+    "exploit": "'"${exploit}"'",
+    "publicExploits": '"${pubExp}"',
     "published": "",
     "updated": "",
     "type": ""' >> ${dirname}/vuln_data.json

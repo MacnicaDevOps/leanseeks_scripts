@@ -4,3 +4,6 @@ API_prisma/twistcli
 vuls_data/vuls.json
 vuls_data/vuls
 vuls_data/vuls/cve_list.txt
+API_prisma/sample.json
+vuls_data/ls1024a_202308.json
+vuls_data/inv.sh

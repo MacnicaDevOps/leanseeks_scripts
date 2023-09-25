@@ -7,7 +7,7 @@ ls_url="https://leanseeks.macnica.co.jp"
 ua="Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36"
 
 # トリアージ結果を取得する
-curl -X 'GET' "${ls_url}/api/triage-results/${triage_id}/" -H 'accept: application/json' -H 'Accept-Language: ja' -H "Authorization: Bearer ${ls_token}" -H 'Content-Type: application/json' -H "$ua" | jq > result_temp.json
+curl -X 'GET' "${ls_url}/api/triage-results/${triage_id}/" -H 'accept: application/json' -H 'Accept-Language: ja' -H "Authorization: Bearer ${ls_token}" -H 'Content-Type: application/json' -H "${ua}" | jq > result_temp.json
 
 # トリアージの属性情報のCSV出力
 appname=$(cat result_temp.json | jq -r ".triageRequest.a.an")
