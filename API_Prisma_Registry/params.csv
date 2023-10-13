@@ -1,0 +1,9 @@
+pod_name,is_internet_connected,is_root,is_privileged,is_port_opened,confidentiality_level,availability_level,integrity_level,scan_result_id
+CI_Scan_Image1,TRUE,TRUE,FALSE,TRUE,H,H,H,ci_scan1.json
+CI_Scan_Image2,TRUE,TRUE,FALSE,TRUE,H,H,H,ci_scan2.json
+CI_Scan_Image3,TRUE,TRUE,FALSE,TRUE,H,H,H,ci_scan3.json
+ls-demo01:104,FALSE,TRUE,FALSE,TRUE,L,M,H,981514334627.dkr.ecr.us-east-2.amazonaws.com/ls-demo01:104
+ls-demo01:101,FALSE,TRUE,FALSE,TRUE,M,H,M,981514334627.dkr.ecr.us-east-2.amazonaws.com/ls-demo01:101
+ls-demo01:93,FALSE,TRUE,TRUE,TRUE,H,L,M,981514334627.dkr.ecr.us-east-2.amazonaws.com/ls-demo01:93
+ls-demo01:84,FALSE,TRUE,FALSE,TRUE,M,H,L,981514334627.dkr.ecr.us-east-2.amazonaws.com/ls-demo01:84
+ls-demo01:80,FALSE,TRUE,FALSE,FALSE,M,L,M,981514334627.dkr.ecr.us-east-2.amazonaws.com/ls-demo01:80

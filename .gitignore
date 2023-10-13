@@ -7,3 +7,5 @@ vuls_data/vuls/cve_list.txt
 API_prisma/sample_data
 vuls_data/ls1024a_202308.json
 vuls_data/inv.sh
+API_Prisma_Registry/env.txt
+API_Prisma_Registry/work
