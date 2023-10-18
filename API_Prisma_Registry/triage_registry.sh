@@ -1,9 +1,6 @@
 #!/bin/bash
 
-source ./env.txt
-
 ## 以下に変数を指定します。CIツールの環境変数からの読み込みができる場合はツールの仕様にあわせて指定してください。
-#image="prisma-scan:latest"
 #pc_user=""
 #pc_pass=""
 #pc_user=""
