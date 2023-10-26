@@ -9,3 +9,6 @@ vuls_data/ls1024a_202308.json
 vuls_data/inv.sh
 API_Prisma_Registry/env.txt
 API_Prisma_Registry/work
+export_csv/env.txt
+export_csv/work
+Eclypsium/work
