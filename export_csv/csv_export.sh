@@ -4,8 +4,8 @@ triage_id=$1
 
 source env.txt
 #ls_token=""
-ls_url="https://leanseeks.macnica.co.jp"
-ua="Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36"
+#ls_url="https://leanseeks-stg.macnica.co.jp"
+#ua="Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Mobile Safari/537.36"
 
 # Working Directoryの作成
 mkdir -p work
@@ -20,7 +20,7 @@ cat work/result_temp.json| jq -r " .triageRequest.a.p[] |[ .pid, .pn, .iic, .ir,
 nkf --oc=UTF-8-BOM "work/${appname}_${triage_id}_properties.csv" > "work/${appname}_${triage_id}_properties_utf8bom.csv"
 
 # トリアージの脆弱性情報のCSV出力
-echo '"アセットID","CVE-ID","パッケージ名","パッケージバージョン","セベリティ","CVSSスコア","CVEタイトル","攻撃元区分(AV)","攻撃の複雑さ(AC)","FIXの有無","エクスプロイト状況","公開日","更新日","攻撃の種類","アプリケーションリスク","判定スコア","判定結果","タグ"' > "work/${appname}_${triage_id}_vulnerabilities.csv"
+echo '"アセットID","CVE ID","パッケージ名","パッケージバージョン","セベリティ","CVSSスコア","CVEタイトル","攻撃元区分(AV)","攻撃の複雑さ(AC)","FIXの有無","エクスプロイト状況","公開日","更新日","攻撃の種類","アプリケーションリスク","判定スコア","判定結果","タグ"' > "work/${appname}_${triage_id}_vulnerabilities.csv"
 cat work/result_temp.json| jq -r ".cves[] |[ .pid, .cve, .pn, .pv, .s, .cs, .ct, .av, .ac, .if, .ecm, .cp, .cu, .at, .ar, .ps, .pl, .tg[].tn  ] |@csv" >> "work/${appname}_${triage_id}_vulnerabilities.csv"
 nkf --oc=UTF-8-BOM "work/${appname}_${triage_id}_vulnerabilities.csv" > "work/${appname}_${triage_id}_vulnerabilities_utf8bom.csv"
 
