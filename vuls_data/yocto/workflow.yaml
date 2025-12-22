@@ -1,0 +1,40 @@
+name: convert yocto to ls
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: prepare the environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y jq python3-pip
+        pip install cvss
+        export PATH="$PATH:$PWD/.local/bin"
+
+    - name: run script
+      run: |
+        ./reform.sh
+
+    - name: Set current datetime as env variable
+      env:
+        TZ: 'Asia/Tokyo' # タイムゾーン指定
+      run: echo "CURRENT_DATETIME=$(date +%s)" >> $GITHUB_ENV
+      
+    - name: 'Upload Artifact'
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.CURRENT_DATETIME }}
+        path: LS_data.json
+        retention-days: 3
